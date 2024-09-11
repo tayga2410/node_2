@@ -9,7 +9,7 @@ function readArticleById(req, res, payload, articles, cb) {
     return cb({ code: 400, message: "нужен ID брат" });
   }
 
-  const article = articles.find((a) => a.id === String(articleId));  
+  const article = articles.find((a) => a.id === Number(articleId));  
 
   if (!article) {
     return cb({ code: 404, message: "Статья не найдена" });

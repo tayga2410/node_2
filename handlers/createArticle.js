@@ -4,7 +4,6 @@ const path = require("path");
 const logRequest = require("./logRequest");
 
 function generateId(articles) {
-  logRequest(req, payload);
   const ids = articles.map((article) => article.id);
   let newId = 1;
   while (ids.includes(newId)) {
@@ -14,6 +13,8 @@ function generateId(articles) {
 }
 
 function createArticle(req, res, payload, articles, cb) {
+  logRequest(req, payload);
+
   const { title, text, date, author, comments } = payload;
 
   if (!title || !text || !author || !Array.isArray(comments)) {
