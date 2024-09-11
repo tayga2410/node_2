@@ -1,15 +1,24 @@
 const fs = require('fs');
 const path = require('path');
 
-function createArticle(req, res, payload, articles, cb) {
-  const {id, title, text, date, author, comments } = payload;
+function generateId(articles) {
+  const ids = articles.map(article => article.id);
+  let newId = 1;
+  while (ids.includes(newId)) {
+    newId++;
+  }
+  return newId;
+}
 
-  if (!id, !title || !text || !author || !Array.isArray(comments)) {
+function createArticle(req, res, payload, articles, cb) {
+  const { title, text, date, author, comments } = payload;
+
+  if (!title || !text || !author || !Array.isArray(comments)) {
     return cb({ code: 400, message: "Недостаточно данных для создания статьи" });
   }
 
   const newArticle = {
-    id,
+    id: generateId(articles),
     title,
     text,
     date,  
