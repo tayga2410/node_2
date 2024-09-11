@@ -10,7 +10,8 @@ const getArticleById = require("./handlers/getArticleById");
 const createArticle = require("./handlers/createArticle");
 const deleteArticle = require("./handlers/deleteArticle");
 const updateArticle = require("./handlers/updateArticle");
-const createComment = require('./handlers/createComent');
+const createComment = require('./handlers/createComment');
+const deleteComment = require('./handlers/deleteComment');
 
 
 let articles = [];
@@ -21,7 +22,8 @@ const handlers = {
   '/api/articles/create': (req, res, payload, cb) => createArticle(req, res, payload, articles, cb),
   '/api/articles/delete': (req, res, payload, cb) => deleteArticle(req, res, payload, articles, cb),
   '/api/articles/update': (req, res, payload, cb) => updateArticle(req, res, payload, articles, cb),
-  '/api/comments/create': (req, res, payload, cb) => createComment(req, res, payload, articles, cb)
+  '/api/comments/create': (req, res, payload, cb) => createComment(req, res, payload, articles, cb),
+  '/api/comments/delete': (req, res, payload, cb) => deleteComment(req, res, payload, articles, cb),
 };
 
 const server = http.createServer((req, res) => {
