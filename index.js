@@ -7,12 +7,14 @@ const port = 3000;
 
 const getAllArticles = require('./handlers/getAllArticles');
 const getArticleById = require("./handlers/getArticleById");
+const createArticle = require("./handlers/createArticle");
 
 let articles = [];
 
 const handlers = {
   '/api/articles/readall': (req, res) => getAllArticles(req, res, articles),
-  '/api/articles/read': (req, res, payload, cb) => getArticleById(req, res, payload, articles, cb)
+  '/api/articles/read': (req, res, payload, cb) => getArticleById(req, res, payload, articles, cb),
+  '/api/articles/create': (req, res, payload, cb) => createArticle(req, res, payload, articles, cb)
 };
 
 const server = http.createServer((req, res) => {
