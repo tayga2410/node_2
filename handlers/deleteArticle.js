@@ -1,8 +1,13 @@
 const fs = require('fs');
 const path = require('path');
 
+const logRequest = require("./logRequest");
+
 function deleteArticle(req, res, payload, articles, cb) {
   const { id } = payload;
+
+  logRequest(req, payload);
+
 
   if (!id) {
     return cb({ code: 400, message: "Необходим ID статьи для удаления" });

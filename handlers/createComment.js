@@ -1,6 +1,8 @@
 const fs = require('fs');
 const path = require('path');
 
+const logRequest = require("./logRequest");
+
 function generateUniqueCommentId(articles) {
   let newId;
   do {
@@ -10,6 +12,8 @@ function generateUniqueCommentId(articles) {
 }
 
 function createComment(req, res, payload, articles, cb) {
+  logRequest(req, payload);
+
   const { articleId, text, date, author } = payload;
 
   if (!articleId || !text || !date || !author) {

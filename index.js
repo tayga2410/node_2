@@ -17,7 +17,7 @@ const deleteComment = require('./handlers/deleteComment');
 let articles = [];
 
 const handlers = {
-  '/api/articles/readall': (req, res) => getAllArticles(req, res, articles),
+  '/api/articles/readall': (req, res) => getAllArticles(req, res, null, articles),
   '/api/articles/read': (req, res, payload, cb) => getArticleById(req, res, payload, articles, cb),
   '/api/articles/create': (req, res, payload, cb) => createArticle(req, res, payload, articles, cb),
   '/api/articles/delete': (req, res, payload, cb) => deleteArticle(req, res, payload, articles, cb),

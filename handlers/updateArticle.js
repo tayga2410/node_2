@@ -1,7 +1,11 @@
 const fs = require('fs');
 const path = require('path');
 
+const logRequest = require("./logRequest");
+
 function updateArticle(req, res, payload, articles, cb) {
+
+  logRequest(req, payload);
   const { id, title, text, date, author, comments } = payload;
 
   if (!id) {
